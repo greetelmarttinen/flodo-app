@@ -3,7 +3,7 @@ import { Text, View } from "react-native"
 
 export default function ToDos() {
     return (
-        <View>
+        <View style={styles.container}>
             <Text style={styles.headerText}>To Do's</Text>
         </View>
     )
