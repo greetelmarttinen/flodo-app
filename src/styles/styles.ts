@@ -19,8 +19,20 @@ export default StyleSheet.create({
         borderRadius: 10,
         padding: 10
     },
+    button: {
+        backgroundColor: "#a3b18a",
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        justifyContent: "center",
+        fontWeight: "bold"
+    },
     todoArray: {
         textAlign: "left",
         fontSize: 17
+    },
+    todoRow: {
+        flexDirection: "row",
+        alignItems: "center"
     }
 })
