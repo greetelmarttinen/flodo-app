@@ -19,4 +19,8 @@ export default StyleSheet.create({
         borderRadius: 10,
         padding: 10
     },
+    todoArray: {
+        textAlign: "left",
+        fontSize: 17
+    }
 })
