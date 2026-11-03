@@ -1,6 +1,6 @@
 import styles from "@/styles/styles";
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, TextInput, View } from "react-native";
 
 export default function ToDos() {
 
@@ -12,7 +12,19 @@ export default function ToDos() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.headerText}>To Do's</Text>
+            <Text style={styles.headerText}>
+                To Do's
+            </Text>
+
+            <TextInput
+                style={styles.input}
+                placeholder="Add To Do"
+                placeholderTextColor={"black"}
+                textAlign="center"
+                value={todo}
+                onChangeText={setTodo}
+            />
+
         </View>
     )
 }
