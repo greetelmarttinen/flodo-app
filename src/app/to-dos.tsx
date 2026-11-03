@@ -1,6 +1,6 @@
 import styles from "@/styles/styles";
 import { useState } from "react";
-import { FlatList, Keyboard, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { FlatList, Keyboard, Pressable, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 
 export default function ToDos() {
 
@@ -10,6 +10,12 @@ export default function ToDos() {
     // state todo-listalle/taulukolle, joka on aluksi tyhjä
     const [todos, setTodos] = useState<string[]>([]);
 
+    // add -painike
+    const addButton = () => {
+        setTodos([...todos, todo]);
+        setTodo("");
+    }
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
@@ -17,14 +23,21 @@ export default function ToDos() {
                     To Do's
                 </Text>
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Add To Do"
-                    placeholderTextColor={"black"}
-                    textAlign="center"
-                    value={todo}
-                    onChangeText={setTodo}
-                />
+                <View style={styles.todoRow}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Add To Do"
+                        placeholderTextColor={"black"}
+                        textAlign="center"
+                        value={todo}
+                        onChangeText={setTodo}
+                    />
+                    <Pressable onPress={addButton}>
+                        <Text style={styles.button}>
+                            +
+                        </Text>
+                    </Pressable>
+                </View>
 
                 <FlatList
                     data={todos}
@@ -33,6 +46,8 @@ export default function ToDos() {
                             {item}
                         </Text>}
                 />
+
+
 
             </View>
         </TouchableWithoutFeedback>
