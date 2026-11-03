@@ -1,6 +1,6 @@
 import styles from "@/styles/styles";
 import { useState } from "react";
-import { Keyboard, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { FlatList, Keyboard, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 
 export default function ToDos() {
 
@@ -24,6 +24,14 @@ export default function ToDos() {
                     textAlign="center"
                     value={todo}
                     onChangeText={setTodo}
+                />
+
+                <FlatList
+                    data={todos}
+                    renderItem={({ item }) =>
+                        <Text style={styles.todoArray}>
+                            {item}
+                        </Text>}
                 />
 
             </View>
