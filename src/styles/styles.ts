@@ -11,4 +11,12 @@ export default StyleSheet.create({
         fontSize: 25,
         fontWeight: "bold"
     },
+    input: {
+        height: 40,
+        width: 250,
+        margin: 12,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10
+    },
 })
