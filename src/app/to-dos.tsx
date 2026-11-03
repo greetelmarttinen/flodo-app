@@ -1,6 +1,6 @@
 import styles from "@/styles/styles";
 import { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import { Keyboard, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 
 export default function ToDos() {
 
@@ -11,20 +11,22 @@ export default function ToDos() {
     const [todos, setTodos] = useState<string[]>([]);
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.headerText}>
-                To Do's
-            </Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+                <Text style={styles.headerText}>
+                    To Do's
+                </Text>
 
-            <TextInput
-                style={styles.input}
-                placeholder="Add To Do"
-                placeholderTextColor={"black"}
-                textAlign="center"
-                value={todo}
-                onChangeText={setTodo}
-            />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Add To Do"
+                    placeholderTextColor={"black"}
+                    textAlign="center"
+                    value={todo}
+                    onChangeText={setTodo}
+                />
 
-        </View>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
