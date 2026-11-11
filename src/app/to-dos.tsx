@@ -24,6 +24,9 @@ export default function ToDos() {
         setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t));
     }
 
+    // tehty to do siirretän listan loppuun
+    const sortedTodos = [...todos].sort((a, b) => Number(a.done) - Number(b.done));
+
     const deleteTodo = (id: string) => {
         setTodos(todos.filter(t => t.id !== id));
     }
@@ -52,7 +55,7 @@ export default function ToDos() {
                         </View>
 
                         <FlatList
-                            data={todos}
+                            data={sortedTodos}
                             keyExtractor={(item) => item.id}
                             renderItem={({ item }) => (
                                 <TodoItem item={item} onToggle={toggleTodo} onDelete={deleteTodo} />
