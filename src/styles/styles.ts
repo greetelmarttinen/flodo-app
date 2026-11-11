@@ -49,5 +49,9 @@ export default StyleSheet.create({
     todoRow: {
         flexDirection: "row",
         alignItems: "center"
-    }
+    },
+    todoItem: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
 })
