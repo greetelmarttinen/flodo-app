@@ -1,11 +1,11 @@
-import styles from "@/styles/styles";
-import { Text, View } from "react-native";
+import PageContainer from "@/components/PageContainer";
+import PageHeader from "@/components/PageHeader";
 
 export default function Index() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.headerText}>Hola !</Text>
-    </View>
+    <PageContainer>
+      <PageHeader title="Timer" />
+    </PageContainer>
   );
 }
 
