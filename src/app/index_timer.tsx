@@ -37,8 +37,10 @@ export default function Index() {
       <PageHeader title="Timer" />
       <View style={styles.pageContent}>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-          <CircleProgress progress={secondsLeft / totalSeconds} />
-          <Text style={{ fontSize: 48, marginTop: 20 }}>{mm}:{ss}</Text>
+          <CircleProgress progress={secondsLeft / totalSeconds} >
+            <Text style={{ fontSize: 48 }}>{mm}:{ss}</Text>
+          </CircleProgress>
+
 
           <Pressable onPress={() => setRunning(!running)}>
             <Text style={{ fontSize: 20, marginTop: 20 }}>
