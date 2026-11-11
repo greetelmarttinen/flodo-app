@@ -9,8 +9,8 @@ export default StyleSheet.create({
     headerContainer: {
         width: "100%",
         alignItems: "center",
-        paddingTop: 20,
-        paddingBottom: 10,
+        paddingTop: 40,
+        paddingBottom: 25,
     },
     headerText: {
         fontSize: 25,
