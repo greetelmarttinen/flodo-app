@@ -34,11 +34,11 @@ export default function TodoItem({ item, onToggle, onDelete }: Props) {
                 <Ionicons
                     name={item.done ? "checkbox" : "square-outline"}
                     size={26}
-                    color="black"
+                    color="#588157"
                 />
                 <Text
                     style={{
-                        color: item.done ? "#999" : "black",
+                        color: item.done ? "#828282" : "black",
                         textDecorationLine: item.done ? "line-through" : "none",
                     }}
                 >
