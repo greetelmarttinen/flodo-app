@@ -4,12 +4,22 @@ export default StyleSheet.create({
     container: {
         backgroundColor: "lightpink",
         flex: 1,
+        justifyContent: "flex-start",
+    },
+    headerContainer: {
+        width: "100%",
         alignItems: "center",
-        justifyContent: "center",
+        paddingTop: 20,
+        paddingBottom: 10,
     },
     headerText: {
         fontSize: 25,
         fontWeight: "bold"
+    },
+    pageContent: {
+        flex: 1,
+        alignItems: "center",
+        width: "100%",
     },
     input: {
         height: 40,
