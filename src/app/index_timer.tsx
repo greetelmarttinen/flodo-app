@@ -41,16 +41,20 @@ export default function Index() {
             <Text style={{ fontSize: 48 }}>{mm}:{ss}</Text>
           </CircleProgress>
 
+          <View style={styles.timerRow}>
+            <Pressable onPress={() => setRunning(!running)}>
+              <Text style={styles.button}>
+                {running ? "Pause" : "Start"}
+              </Text>
+            </Pressable>
 
-          <Pressable onPress={() => setRunning(!running)}>
-            <Text style={{ fontSize: 20, marginTop: 20 }}>
-              {running ? "Pause" : "Start"}
-            </Text>
-          </Pressable>
+            <Pressable onPress={() => { setRunning(false); setSecondsLeft(totalSeconds); }}>
+              <Text style={styles.button}>Reset</Text>
+            </Pressable>
+          </View>
 
-          <Pressable onPress={() => { setRunning(false); setSecondsLeft(totalSeconds); }}>
-            <Text style={{ fontSize: 20, marginTop: 10 }}>Reset</Text>
-          </Pressable>
+
+
         </View>
 
       </View>

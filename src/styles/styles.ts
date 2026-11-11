@@ -40,7 +40,8 @@ export default StyleSheet.create({
         paddingHorizontal: 20,
         boxShadow: 'inset -2px -2px 5px rgba(0, 0, 0, 0.25)',
         justifyContent: "center",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontSize: 18
     },
     todoArray: {
         textAlign: "left",
@@ -54,4 +55,10 @@ export default StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
     },
+    timerRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 15,
+        marginTop: 50
+    }
 })
