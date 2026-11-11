@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { PaperProvider } from "react-native-paper";
+import { MD3LightTheme, PaperProvider } from "react-native-paper";
 import Index from "./index_timer";
 import ToDos from "./to-dos";
 
@@ -8,7 +8,7 @@ const Tab = createBottomTabNavigator();
 
 export default function RootLayout() {
   return (
-    <PaperProvider>
+    <PaperProvider theme={MD3LightTheme}>
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen
@@ -21,7 +21,7 @@ export default function RootLayout() {
             options={{ headerShown: false }} />
         </Tab.Navigator>
       </NavigationContainer>
-    </PaperProvider>
+    </ PaperProvider>
 
   );
 }
