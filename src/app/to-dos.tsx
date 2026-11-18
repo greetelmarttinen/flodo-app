@@ -17,6 +17,10 @@ export default function ToDos() {
 
     // add -painike
     const addButton = () => {
+        if (!todo.trim()) {
+            return;
+        }
+
         setTodos([...todos, { id: Date.now().toString(), text: todo, done: false }]);
         setTodo("");
     }
@@ -43,8 +47,8 @@ export default function ToDos() {
                             <TextInput
                                 style={styles.input}
                                 placeholder="Add To Do"
-                                placeholderTextColor={"black"}
-                                textAlign="center"
+                                placeholderTextColor={"gray"}
+                                textAlign="start"
                                 value={todo}
                                 onChangeText={setTodo}
                             />
@@ -59,6 +63,7 @@ export default function ToDos() {
                         </View>
 
                         <FlatList
+                            style={styles.todoList}
                             data={sortedTodos}
                             keyExtractor={(item) => item.id}
                             renderItem={({ item }) => (

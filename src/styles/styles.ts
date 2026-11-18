@@ -23,7 +23,7 @@ export default StyleSheet.create({
     },
     input: {
         height: 44,
-        width: 250,
+        width: 260,
         margin: 12,
         borderWidth: 1,
         borderRadius: 10,
@@ -50,6 +50,10 @@ export default StyleSheet.create({
     todoRow: {
         flexDirection: "row",
         alignItems: "center"
+    },
+    todoList: {
+        width: "320",
+        alignSelf: "center",
     },
     todoItem: {
         flexDirection: "row",
