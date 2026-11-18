@@ -73,10 +73,11 @@ export function TimerProvider({ children }: { children: ReactNode }) {
             >
                 <View style={styles.modalOverlay}>
                     <View style={styles.modalContent}>
-                        <Text style={styles.modalTitle}>Good job!</Text>
+                        <Text style={styles.modalTitle}>🎉 Good job!</Text>
 
                         <Text style={styles.modalText}>
-                            Timer has ended.
+                            You've completed your focus session.
+                            Take a well-deserved break! ✨
                         </Text>
 
                         <Button
@@ -85,7 +86,10 @@ export function TimerProvider({ children }: { children: ReactNode }) {
                             textColor="black"
                             contentStyle={{ height: 48 }}
                             style={{ width: "100%", borderRadius: 10 }}
-                            onPress={() => setShowFinishedModal(false)}
+                            onPress={() => {
+                                setShowFinishedModal(false);
+                                resetTimer();
+                            }}
                         >
                             OK
                         </Button>

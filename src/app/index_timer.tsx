@@ -63,7 +63,13 @@ export default function Index() {
 
             <Pressable onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              setRunning(!running);
+
+              if (secondsLeft === 0) {
+                resetTimer();
+                setRunning(true);
+              } else {
+                setRunning(!running);
+              }
             }}>
               <Text style={styles.button}>
                 {running ? "Pause" : "Start"}
