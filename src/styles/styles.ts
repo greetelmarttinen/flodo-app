@@ -22,7 +22,7 @@ export default StyleSheet.create({
         width: "100%",
     },
     input: {
-        height: 40,
+        height: 44,
         width: 250,
         margin: 12,
         borderWidth: 1,
