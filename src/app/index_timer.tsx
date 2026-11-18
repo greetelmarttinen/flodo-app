@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import styles from "@/styles/styles";
 import { Picker } from "@react-native-picker/picker";
 import { useEffect, useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, Vibration, View } from "react-native";
 
 export default function Index() {
   const [selectedMinutes, setSelectedMinutes] = useState(25);
@@ -24,6 +24,7 @@ export default function Index() {
     const id = setInterval(() => {
       setSecondsLeft((prev) => {
         if (prev <= 1) {
+          Vibration.vibrate();
           setRunning(false);
           return 0;
         }
@@ -55,7 +56,7 @@ export default function Index() {
             style={{ width: 250, height: 150 }}
             itemStyle={{ fontSize: 20, color: "black" }}
           >
-            {[5, 10, 15, 20, 25].map((minute) => (
+            {[1, 5, 10, 15, 20, 25].map((minute) => (
               <Picker.Item
                 key={minute}
                 label={`${minute} min`}
