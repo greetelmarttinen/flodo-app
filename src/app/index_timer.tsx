@@ -1,44 +1,23 @@
 import CircleProgress from "@/components/CircleProgress";
 import PageContainer from "@/components/PageContainer";
 import PageHeader from "@/components/PageHeader";
+import { useTimer } from "@/contexts/TimerContext";
 import styles from "@/styles/styles";
 import { Picker } from "@react-native-picker/picker";
 import * as Haptics from "expo-haptics";
-import { useEffect, useState } from "react";
-import { Modal, Pressable, Text, Vibration, View } from "react-native";
-import { Button } from "react-native-paper";
+import { Pressable, Text, View } from "react-native";
 
 export default function Index() {
-  const [selectedMinutes, setSelectedMinutes] = useState(25);
+  const {
+    selectedMinutes,
+    setSelectedMinutes,
+    secondsLeft,
+    running,
+    setRunning,
+    resetTimer,
+  } = useTimer();
 
   const totalSeconds = selectedMinutes * 60;
-
-  const [secondsLeft, setSecondsLeft] = useState(totalSeconds);
-  const [running, setRunning] = useState(false);
-
-  const [showFinishedModal, setShowFinishedModal] = useState(false);
-
-  useEffect(() => {
-    setSecondsLeft(selectedMinutes * 60);
-  }, [selectedMinutes]);
-
-  useEffect(() => {
-    if (!running) return;
-
-    const id = setInterval(() => {
-      setSecondsLeft((prev) => {
-        if (prev <= 1) {
-          Vibration.vibrate();
-          setShowFinishedModal(true);
-          setRunning(false);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(id);
-  }, [running]);
-
 
   const mm = Math.floor(secondsLeft / 60).toString().padStart(2, "0");
   const ss = (secondsLeft % 60).toString().padStart(2, "0");
@@ -54,35 +33,7 @@ export default function Index() {
             <Text style={{ fontSize: 48 }}>{mm}:{ss}</Text>
           </CircleProgress>
 
-          <Modal
-            visible={showFinishedModal}
-            transparent={true}
-            animationType="fade"
-            onRequestClose={() => setShowFinishedModal(false)}
-          >
-            <View style={styles.modalOverlay}>
-              <View style={styles.modalContent}>
-                <Text style={styles.modalTitle}>Good job!</Text>
 
-                <Text style={styles.modalText}>
-                  Timer has ended.
-                </Text>
-
-                <Button
-                  mode="contained"
-                  buttonColor="#a3b18a"
-                  textColor="black"
-                  contentStyle={{ height: 48 }}
-                  style={{ width: "100%", borderRadius: 10 }}
-                  onPress={() => setShowFinishedModal(false)}
-                >
-                  OK
-                </Button>
-
-              </View>
-            </View>
-
-          </Modal>
 
           <Picker
             selectedValue={selectedMinutes}
@@ -105,8 +56,7 @@ export default function Index() {
 
             <Pressable onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              setRunning(false);
-              setSecondsLeft(totalSeconds);
+              resetTimer();
             }}>
               <Text style={styles.button}>Reset</Text>
             </Pressable>
