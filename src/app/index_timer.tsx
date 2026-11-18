@@ -5,6 +5,7 @@ import styles from "@/styles/styles";
 import { Picker } from "@react-native-picker/picker";
 import { useEffect, useState } from "react";
 import { Modal, Pressable, Text, Vibration, View } from "react-native";
+import { Button } from "react-native-paper";
 
 export default function Index() {
   const [selectedMinutes, setSelectedMinutes] = useState(25);
@@ -66,10 +67,16 @@ export default function Index() {
                   Timer has ended.
                 </Text>
 
-                <Pressable onPress={() => setShowFinishedModal(false)}>
-                  <Text style={styles.button}>OK</Text>
-
-                </Pressable>
+                <Button
+                  mode="contained"
+                  buttonColor="#a3b18a"
+                  textColor="black"
+                  contentStyle={{ height: 48 }}
+                  style={{ width: "100%", borderRadius: 10 }}
+                  onPress={() => setShowFinishedModal(false)}
+                >
+                  OK
+                </Button>
 
               </View>
             </View>
