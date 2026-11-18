@@ -60,5 +60,29 @@ export default StyleSheet.create({
         alignItems: "center",
         gap: 15,
         marginTop: 50
-    }
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    modalContent: {
+        backgroundColor: "white",
+        padding: 30,
+        borderRadius: 20,
+        width: "80%",
+        alignItems: "center",
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontWeight: "bold",
+        marginBottom: 15,
+
+    },
+    modalText: {
+        fontSize: 16,
+        textAlign: "center",
+        marginBottom: 40,
+    },
 })
