@@ -2,15 +2,21 @@ import CircleProgress from "@/components/CircleProgress";
 import PageContainer from "@/components/PageContainer";
 import PageHeader from "@/components/PageHeader";
 import styles from "@/styles/styles";
+import { Picker } from "@react-native-picker/picker";
 import { useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 export default function Index() {
-  const minutes = 25;
-  const totalSeconds = minutes * 60;
+  const [selectedMinutes, setSelectedMinutes] = useState(25);
+
+  const totalSeconds = selectedMinutes * 60;
 
   const [secondsLeft, setSecondsLeft] = useState(totalSeconds);
   const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    setSecondsLeft(selectedMinutes * 60);
+  }, [selectedMinutes]);
 
   useEffect(() => {
     if (!running) return;
@@ -36,10 +42,28 @@ export default function Index() {
     <PageContainer>
       <PageHeader title="Timer" />
       <View style={styles.pageContent}>
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", gap: 0 }}>
+
           <CircleProgress progress={secondsLeft / totalSeconds} >
             <Text style={{ fontSize: 48 }}>{mm}:{ss}</Text>
           </CircleProgress>
+
+          <Picker
+            selectedValue={selectedMinutes}
+            onValueChange={(itemValue) => setSelectedMinutes(itemValue)}
+            enabled={!running}
+            style={{ width: 250, height: 150 }}
+            itemStyle={{ fontSize: 20, color: "black" }}
+          >
+            {[5, 10, 15, 20, 25].map((minute) => (
+              <Picker.Item
+                key={minute}
+                label={`${minute} min`}
+                value={minute}
+              />
+            ))}
+
+          </Picker>
 
           <View style={styles.timerRow}>
             <Pressable onPress={() => setRunning(!running)}>
