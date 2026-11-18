@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import styles from "@/styles/styles";
 import { Picker } from "@react-native-picker/picker";
 import { useEffect, useState } from "react";
-import { Pressable, Text, Vibration, View } from "react-native";
+import { Modal, Pressable, Text, Vibration, View } from "react-native";
 
 export default function Index() {
   const [selectedMinutes, setSelectedMinutes] = useState(25);
@@ -13,6 +13,8 @@ export default function Index() {
 
   const [secondsLeft, setSecondsLeft] = useState(totalSeconds);
   const [running, setRunning] = useState(false);
+
+  const [showFinishedModal, setShowFinishedModal] = useState(false);
 
   useEffect(() => {
     setSecondsLeft(selectedMinutes * 60);
@@ -25,6 +27,7 @@ export default function Index() {
       setSecondsLeft((prev) => {
         if (prev <= 1) {
           Vibration.vibrate();
+          setShowFinishedModal(true);
           setRunning(false);
           return 0;
         }
@@ -48,6 +51,30 @@ export default function Index() {
           <CircleProgress progress={secondsLeft / totalSeconds} >
             <Text style={{ fontSize: 48 }}>{mm}:{ss}</Text>
           </CircleProgress>
+
+          <Modal
+            visible={showFinishedModal}
+            transparent={true}
+            animationType="fade"
+            onRequestClose={() => setShowFinishedModal(false)}
+          >
+            <View style={styles.modalOverlay}>
+              <View style={styles.modalContent}>
+                <Text style={styles.modalTitle}>Good job!</Text>
+
+                <Text style={styles.modalText}>
+                  Timer has ended.
+                </Text>
+
+                <Pressable onPress={() => setShowFinishedModal(false)}>
+                  <Text style={styles.button}>OK</Text>
+
+                </Pressable>
+
+              </View>
+            </View>
+
+          </Modal>
 
           <Picker
             selectedValue={selectedMinutes}
