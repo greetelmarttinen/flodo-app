@@ -3,6 +3,7 @@ import PageContainer from "@/components/PageContainer";
 import PageHeader from "@/components/PageHeader";
 import styles from "@/styles/styles";
 import { Picker } from "@react-native-picker/picker";
+import * as Haptics from "expo-haptics";
 import { useEffect, useState } from "react";
 import { Modal, Pressable, Text, Vibration, View } from "react-native";
 import { Button } from "react-native-paper";
@@ -102,11 +103,18 @@ export default function Index() {
 
           <View style={styles.timerRow}>
 
-            <Pressable onPress={() => { setRunning(false); setSecondsLeft(totalSeconds); }}>
+            <Pressable onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              setRunning(false);
+              setSecondsLeft(totalSeconds);
+            }}>
               <Text style={styles.button}>Reset</Text>
             </Pressable>
 
-            <Pressable onPress={() => setRunning(!running)}>
+            <Pressable onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              setRunning(!running);
+            }}>
               <Text style={styles.button}>
                 {running ? "Pause" : "Start"}
               </Text>

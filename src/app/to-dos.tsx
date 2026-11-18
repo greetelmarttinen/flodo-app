@@ -2,6 +2,7 @@ import PageContainer from "@/components/PageContainer";
 import PageHeader from "@/components/PageHeader";
 import TodoItem, { Todo } from "@/components/TodoItem";
 import styles from "@/styles/styles";
+import * as Haptics from "expo-haptics";
 import { useState } from "react";
 import { FlatList, Keyboard, Pressable, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 
@@ -47,7 +48,10 @@ export default function ToDos() {
                                 value={todo}
                                 onChangeText={setTodo}
                             />
-                            <Pressable onPress={addButton}>
+                            <Pressable onPress={() => {
+                                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                                addButton();
+                            }}>
                                 <Text style={styles.button}>
                                     +
                                 </Text>
