@@ -66,15 +66,17 @@ export default function Index() {
           </Picker>
 
           <View style={styles.timerRow}>
+
+            <Pressable onPress={() => { setRunning(false); setSecondsLeft(totalSeconds); }}>
+              <Text style={styles.button}>Reset</Text>
+            </Pressable>
+
             <Pressable onPress={() => setRunning(!running)}>
               <Text style={styles.button}>
                 {running ? "Pause" : "Start"}
               </Text>
             </Pressable>
 
-            <Pressable onPress={() => { setRunning(false); setSecondsLeft(totalSeconds); }}>
-              <Text style={styles.button}>Reset</Text>
-            </Pressable>
           </View>
 
 
