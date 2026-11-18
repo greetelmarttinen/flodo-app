@@ -2,10 +2,10 @@ import PageContainer from "@/components/PageContainer";
 import PageHeader from "@/components/PageHeader";
 import TodoItem, { Todo } from "@/components/TodoItem";
 import styles from "@/styles/styles";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from "expo-haptics";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FlatList, Keyboard, Pressable, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
-
 
 export default function ToDos() {
 
@@ -14,6 +14,42 @@ export default function ToDos() {
 
     // state todo-listalle
     const [todos, setTodos] = useState<Todo[]>([]);
+
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        const loadTodos = async () => {
+            try {
+                const savedTodos = await AsyncStorage.getItem("todos");
+                // console.log("Ladatut tehtävät:", savedTodos);
+
+                if (savedTodos !== null) {
+                    setTodos(JSON.parse(savedTodos));
+                }
+            } catch (error) {
+                console.log("Error loading todos:", error);
+            } finally {
+                setIsLoaded(true);
+            }
+        };
+        loadTodos();
+    }, []);
+
+    useEffect(() => {
+        if (!isLoaded) {
+            return;
+        }
+
+        const savedTodos = async () => {
+            try {
+                await AsyncStorage.setItem("todos", JSON.stringify(todos));
+                // console.log("Tallennetut tehtävät:", todos)
+            } catch (error) {
+                console.log("Error saving todos:", error);
+            }
+        };
+        savedTodos();
+    }, [todos, isLoaded]);
 
     // add -painike
     const addButton = () => {
