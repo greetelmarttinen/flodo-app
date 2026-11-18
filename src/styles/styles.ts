@@ -52,6 +52,7 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     todoList: {
+        // flex: 1,
         width: "320",
         alignSelf: "center",
     },

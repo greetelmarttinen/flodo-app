@@ -42,7 +42,7 @@ export default function ToDos() {
                 <View style={styles.pageContent}>
                     <PageHeader title="To Do's"></PageHeader>
 
-                    <View>
+                    <View style={{ flex: 1, gap: 7 }}>
                         <View style={styles.todoRow}>
                             <TextInput
                                 style={styles.input}
@@ -64,6 +64,7 @@ export default function ToDos() {
 
                         <FlatList
                             style={styles.todoList}
+                            // contentContainerStyle={{ paddingBottom: 67 }}
                             data={sortedTodos}
                             keyExtractor={(item) => item.id}
                             renderItem={({ item }) => (
