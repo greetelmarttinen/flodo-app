@@ -1,56 +1,30 @@
-# Welcome to your Expo app 👋
+### Flodo – Focus Timer & To-Do App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Flodo is a mobile application designed to support focus, time management and everyday task organization. The app combines a customizable focus timer with a simple to-do list, helping users organize their tasks and stay focused on what matters.
 
-## Get started
+## Features
+# Focus Timer
+- Choose a focus session duration between 5 and 25 minutes (5, 10, 15, 20 or 25 minutes).
+- Start, pause and reset the timer.
+- Receive a vibration when the timer reaches zero.
+- A completion modal appears when the focus session ends, encouraging the user to take a short break.
+- Haptic feedback when interacting with timer controls.
+  
 
-1. Install dependencies
+# To-Do List
+- Add new tasks.
+- Mark tasks as completed.
+- Delete tasks.
+- Tasks are saved locally and remain available after closing and reopening the application.
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Technologies
+- React Native
+- TypeScript
+- Expo
+- Expo Router
+- React Native Paper
+- React Native Picker
+- AsyncStorage
+- Expo Haptics
+- React Native Vibration
+- React Native Modal
