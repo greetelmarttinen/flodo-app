@@ -28,3 +28,9 @@ Flodo is a mobile application designed to support focus, time management and eve
 - Expo Haptics
 - React Native Vibration
 - React Native Modal
+
+## Screenshots
+### Focus Timer
+![Flodo Focus Timer](flodo-app_timer.png)
+### To Do's List
+![Flodo To Do's List](flodo-app_todolist.png)
